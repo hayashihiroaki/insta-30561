@@ -1,0 +1,30 @@
+<div class="mx-auto" style="width: 200px;">
+  <ul>
+    <li>
+      <%= link_to '写真投稿', [:new, :photo] %>
+    </li>
+    <li>
+      <%= link_to 'logout', destroy_user_session_path, method: :delete %>
+    </li>
+  </ul>
+</div>
+
+<% @feeds.each do |photo| %>
+  <div class="card mb-4">
+    <div class="text-center">
+      <figure class="figure">
+        <%= link_to [photo] do %>
+          <%= image_tag photo.image %>
+        <% end %>
+      </figure>
+    </div>
+    <div class="mx-auto">
+      <div>
+        <%= link_to photo.user.email, [photo.user] %>
+      </div>
+      <div>
+        <%= photo.caption %>
+      </div>
+    </div>
+  </div>
+<% end %>
